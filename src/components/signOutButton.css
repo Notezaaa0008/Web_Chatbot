@@ -1,0 +1,12 @@
+@media only screen and (max-width: 540px) {
+  .ml-auto-dropDown {
+    background-color: white !important;
+    color: black !important;
+    border: none !important;
+    font-weight: 500 !important;
+  }
+
+  .ml-auto-dropDown:hover {
+    background-color: gray !important;
+  }
+}

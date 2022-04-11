@@ -8,11 +8,9 @@ const SignIn = () => {
     <div className="popup-login">
       <div className="popup-inner-login">
         <div>
-          <img src={logoPtt} alt="" width="225" height="225" />
+          <img className="imageLogo" src={logoPtt} alt="" width="225" height="225" />
         </div>
-        <div className="popup-header-login">
-          <h5>Please sign in to connect with chat bot</h5>
-        </div>
+        <div className="popup-header-login">Please sign in to connect with chatbot</div>
         <div>
           <hr />
         </div>

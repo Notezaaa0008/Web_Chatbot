@@ -1,0 +1,40 @@
+.setting {
+  display: none;
+  color: white;
+}
+
+.name-singOut {
+  display: flex;
+  align-items: center;
+}
+
+.dropDown-setting {
+  display: none;
+}
+
+@media only screen and (max-width: 540px) {
+  .name-singOut {
+    display: none;
+  }
+
+  .setting {
+    display: block;
+  }
+
+  .dropDown-setting {
+    position: absolute;
+    top: 55px;
+    right: 0px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: -3px 3px 10px gray;
+    background-color: white;
+    width: 150px;
+    height: 150px;
+    z-index: 20;
+  }
+}
