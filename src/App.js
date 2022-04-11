@@ -5,7 +5,6 @@ import { PageLayout } from "./components/PageLayout";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import { loginRequest } from "./authConfig";
 import Button from "react-bootstrap/Button";
-import { ProfileData } from "./components/ProfileData";
 import { callMsGraph } from "./graph";
 import { ChatBot } from "./components/ChatBot";
 import SignIn from "./components/SignInComponent/SignIn";
@@ -35,19 +34,7 @@ function ProfileContent() {
       });
   }
 
-  return (
-    <>
-      {graphData ? (
-        // <ProfileData graphData={graphData} />
-        <ChatBot graphData={graphData} />
-      ) : (
-        // <Button variant="secondary" onClick={RequestProfileData}>
-        //   Request Profile Information
-        // </Button>
-        RequestProfileData()
-      )}
-    </>
-  );
+  return <>{graphData ? <ChatBot graphData={graphData} /> : RequestProfileData()}</>;
 }
 
 function App() {

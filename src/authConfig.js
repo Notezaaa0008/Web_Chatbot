@@ -1,9 +1,7 @@
 export const msalConfig = {
   auth: {
     clientId: "Enter_the_Application_Id_Here",
-
     authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
-
     redirectUri: "Enter_the_Redirect_Uri_Here"
   },
   cache: {
@@ -20,5 +18,4 @@ export const loginRequest = {
 // Add the endpoints here for Microsoft Graph API services you'd like to use.
 export const graphConfig = {
   graphMeEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me"
-  //
 };
