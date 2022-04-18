@@ -6,15 +6,21 @@ import logo from "../img/logo-ptt.png";
 export const ChatBot = props => {
   const [viewImg, setViewImg] = useState(false);
   const [Image, setImage] = useState("");
+  const [listImg, setListImg] = useState([]);
 
   useEffect(() => {
     setTimeout(() => addEventToImg(), 2000);
   }, []);
 
   const addEventToImg = () => {
+    console.log(listImg.length);
     let elementImg = document.getElementsByClassName("rw-image-frame");
     for (let i = 0; i < elementImg.length; i++) {
       elementImg[i].addEventListener("click", e => handleViewImg(e));
+    }
+
+    for (let j = 0; j < listImg.length; j++) {
+      listImg.pop();
     }
   };
 
@@ -53,8 +59,9 @@ export const ChatBot = props => {
           bot_uttered: e => {
             console.log(e.attachment);
             if (e.attachment) {
+              listImg.push(e.attachment);
               // set timeout response
-              setTimeout(() => addEventToImg(), 3000);
+              setTimeout(() => addEventToImg(), (listImg.length + 1) * 1000);
             }
           },
           connect: () => console.log("connection established")
