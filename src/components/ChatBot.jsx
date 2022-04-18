@@ -53,7 +53,8 @@ export const ChatBot = props => {
           bot_uttered: e => {
             console.log(e.attachment);
             if (e.attachment) {
-              setTimeout(() => addEventToImg(), 1000);
+              // set timeout response
+              setTimeout(() => addEventToImg(), 2000);
             }
           },
           connect: () => console.log("connection established")
