@@ -7,6 +7,7 @@ export const ChatBot = props => {
   const [viewImg, setViewImg] = useState(false);
   const [Image, setImage] = useState("");
   let listImg = [];
+  let list = [];
 
   useEffect(() => {
     setTimeout(() => addEventToImg(), 2000);
@@ -20,6 +21,10 @@ export const ChatBot = props => {
 
     for (let j = 0; j < listImg.length; j++) {
       listImg.pop();
+    }
+
+    for (let k = 0; k < list.length; k++) {
+      list.pop();
     }
   };
 
@@ -49,17 +54,27 @@ export const ChatBot = props => {
       {/* widget chat */}
       <Widget
         initPayload={"/greet"}
-        socketUrl={"http://localhost:5005"}
+        socketUrl={"https://ogcsmartchatbot-qa-endpoint.pttplc.com/"}
         socketPath={"/socket.io/"}
         customData={{ language: "en", fullName: `${props.graphData.givenName} ${props.graphData.surname}` }} // arbitrary custom data. Stay minimal as this will be added to the socket
         title={"OGC Smart Chatbot"}
         showMessageDate={true}
         onSocketEvent={{
           bot_uttered: e => {
-            console.log(e.attachment);
-            if (e.attachment) {
+            if (e.text) {
+              list.push(e.text);
+            } else if (e.attachment) {
+              list.push(e.attachment);
               listImg.push(e.attachment);
-              // set timeout response
+            }
+            console.log(list);
+            if (!list[0].type) {
+              setTimeout(() => addEventToImg(), (listImg.length + 1.5) * 3000);
+            } else if (listImg.length === 1) {
+              setTimeout(() => addEventToImg(), listImg.length * 1000);
+            } else if (listImg.length === 2) {
+              setTimeout(() => addEventToImg(), (listImg.length + 1) * 1000);
+            } else {
               setTimeout(() => addEventToImg(), (listImg.length + 1.5) * 1000);
             }
             console.log(listImg.length);
